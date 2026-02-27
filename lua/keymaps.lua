@@ -1,31 +1,5 @@
 vim.pack.add({
 	{ src = "https://github.com/folke/which-key.nvim" },
-	{ src = "https://github.com/folke/snacks.nvim" }
-})
-
-local snacks = require("snacks")
-
-snacks.setup({
-	bigfile = { enabled = true },
-	dashboard = { enabled = true },
-	explorer = { enabled = true },
-	indent = { enabled = true },
-	input = { enabled = true },
-	notifier = {
-	enabled = true,
-			timeout = 3000,
-		},
-		picker = { enabled = true },
-		quickfile = { enabled = true },
-		scope = { enabled = true },
-		scroll = { enabled = true },
-		statuscolumn = { enabled = true },
-		words = { enabled = true },
-		styles = {
-			notification = {
-				-- wo = { wrap = true } -- Wrap notifications
-			}
-		}	
 })
 
 local whichkey = require("which-key")
@@ -84,17 +58,16 @@ whichkey.setup({
 		},
 		-- better descriptions
 		{ "gx", desc = "Open with system app" },
-				},
+	},
 
 	triggers = {
-		{ "<leader>", mode = { "n", "v" }},
+		{ "<leader>", mode = { "n", "v" } },
 		{ "<auto>", mode = "nixsotc" },
-		{ "a", mode = { "n", "v" }},
-	}
+		{ "a", mode = { "n", "v" } },
+	},
 })
 
 local keymap = vim.keymap.set
-local s = { silent = true }
 
 -- Set highlight on search, press <Esc> to clear.
 vim.opt.hlsearch = true
@@ -106,10 +79,7 @@ vim.diagnostic.config({
 	float = {
 		border = "single",
 		format = function(d)
-			return string.format("%s (%s) [%s]",
-				d.message,
-				d.source,
-				d.code or d.user_data.lsp.code)
+			return string.format("%s (%s) [%s]", d.message, d.source, d.code or d.user_data.lsp.code)
 		end,
 	},
 })
@@ -118,14 +88,16 @@ keymap("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostics
 local diagnostic_goto = function(next, severity)
-  return function()
-    vim.diagnostic.jump({
-      count = (next and 1 or -1) * vim.v.count1,
-      severity = severity and vim.diagnostic.severity[severity] or nil,
-      float = true,
-    })
-  end
+	return function()
+		vim.diagnostic.jump({
+			count = (next and 1 or -1) * vim.v.count1,
+			severity = severity and vim.diagnostic.severity[severity] or nil,
+			float = true,
+		})
+	end
 end
+
+local buffer_utils = require("utils.buffer")
 
 keymap("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 keymap("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
@@ -169,11 +141,9 @@ keymap("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 keymap("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 keymap("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 keymap("n", "<leader>bd", function()
-	Snacks.bufdelete()
+	buffer_utils.delete(false)
 end, { desc = "Delete Buffer" })
 keymap("n", "<leader>bo", function()
-	Snacks.bufdelete.other()
+	buffer_utils.delete_others(false)
 end, { desc = "Delete Other Buffers" })
 keymap("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
-
-
