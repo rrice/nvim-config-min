@@ -1,7 +1,3 @@
-vim.pack.add({
-	{ src = "https://github.com/folke/which-key.nvim" },
-})
-
 local whichkey = require("which-key")
 
 whichkey.setup({
@@ -36,6 +32,8 @@ whichkey.setup({
 		{ "<leader>s", group = "search" },
 		{ "<leader>u", group = "ui" },
 		{ "<leader>x", group = "diagnostics/quickfix" },
+		{ "<leader>ff", desc = "Format buffer" },
+		{ "<leader>fs", desc = "Format via LSP fallback" },
 		{ "[", group = "prev" },
 		{ "]", group = "next" },
 		{ "g", group = "goto" },
@@ -98,6 +96,7 @@ local diagnostic_goto = function(next, severity)
 end
 
 local buffer_utils = require("utils.buffer")
+local conform = require("conform")
 
 keymap("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 keymap("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
@@ -147,3 +146,12 @@ keymap("n", "<leader>bo", function()
 	buffer_utils.delete_others(false)
 end, { desc = "Delete Other Buffers" })
 keymap("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
+
+-- Formatting
+keymap("n", "<leader>ff", function()
+	conform.format({ async = true })
+end, { desc = "Format buffer" })
+
+keymap("n", "<leader>fs", function()
+	conform.format({ async = true, lsp_callback = true })
+end, { desc = "Format via LSP callback" })

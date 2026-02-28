@@ -1,9 +1,3 @@
-vim.pack.add({
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-context" },
-})
-
-
 local parsers = {
 	"bash",
 	"c",
@@ -36,4 +30,3 @@ local parsers = {
 local ts = require("nvim-treesitter")
 
 ts.install(parsers)
-

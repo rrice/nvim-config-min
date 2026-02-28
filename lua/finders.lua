@@ -1,12 +1,3 @@
-vim.pack.add({
-	{ src = "https://github.com/nvim-lua/plenary.nvim" },
-	{ src = "https://github.com/sindrets/diffview.nvim" },
-	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
-	{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
-	--{ src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
-	{ src = "https://github.com/NeogitOrg/neogit" },
-})
-
 local ts_themes = require("telescope.themes")
 local ts_builtin = require("telescope.builtin")
 
@@ -21,9 +12,9 @@ ts.setup({
 			case_mode = "smart_case",
 		},
 		["ui-select"] = {
-			ts_themes.get_dropdown({})
-		}
-	}
+			ts_themes.get_dropdown({}),
+		},
+	},
 })
 --ts.load_extension("fzf")
 ts.load_extension("ui-select")
@@ -42,12 +33,11 @@ keymap("n", "<leader>sr", ts_builtin.resume, { desc = "[S]earch [R]esume" })
 keymap("n", "<leader>s.", ts_builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 keymap("n", "<leader><leader>", ts_builtin.buffers, { desc = "[ ] Find existing buffers" })
 keymap("n", "<leader>sn", function()
-  ts_builtin.find_files({ cwd = vim.fn.stdpath("config") })
+	ts_builtin.find_files({ cwd = vim.fn.stdpath("config") })
 end, { desc = "[S]earch [N]eovim configuration" })
 
 -- Neogit
 local neogit = require("neogit")
 neogit.setup({
-	graph_style = "unicode"
+	graph_style = "unicode",
 })
-

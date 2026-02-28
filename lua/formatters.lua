@@ -1,7 +1,3 @@
-vim.pack.add({
-	{ src = "https://github.com/stevearc/conform.nvim" },
-})
-
 local t = require("conform")
 
 local biome_path = vim.fn.stdpath("data") .. "/mason/packages/biome/node_modules/.bin/biome"
