@@ -27,6 +27,9 @@ local parsers = {
 	"zig",
 }
 
-local ts = require("nvim-treesitter")
-
-ts.install(parsers)
+require("nvim-treesitter").install(parsers)
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function()
+		pcall(vim.treesitter.start)
+	end,
+})

@@ -74,10 +74,17 @@ vim.opt.hlsearch = true
 vim.diagnostic.config({
 	virtual_text = false,
 	signs = true,
+	severity_sort = true,
+	underline = true,
 	float = {
 		border = "single",
 		format = function(d)
-			return string.format("%s (%s) [%s]", d.message, d.source, d.code or d.user_data.lsp.code)
+			return string.format(
+				"%s (%s) [%s]",
+				d.message,
+				d.source,
+				d.code or d.user_data.lsp.code and d.user_data.lsp and d.user_data.lsp.code or ""
+			)
 		end,
 	},
 })

@@ -1,28 +1,5 @@
 local ts_themes = require("telescope.themes")
 local ts_builtin = require("telescope.builtin")
-
-local function build_fzf_native()
-	local plugin_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/telescope-fzf-native.nvim"
-	if vim.fn.isdirectory(plugin_path) == 0 then
-		return
-	end -- not installed yet
-	local makefile = plugin_path .. "/makefile"
-	if vim.fn.filereadable(makefile) == 0 then
-		return
-	end
-
-	-- Run `make` only if the compiled library is missing
-	local lib = plugin_path .. "/build/libfzf.so"
-	if vim.fn.filereadable(lib) == 0 then
-		vim.cmd("echo 'Building telescope-fzf-native…'")
-		vim.fn.system({ "make", "-C", plugin_path })
-		vim.cmd("echo 'telescope-fzf-native built'")
-	end
-end
-
--- Call it once
-build_fzf_native()
-
 local ts = require("telescope")
 
 ts.setup({

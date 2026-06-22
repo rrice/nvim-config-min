@@ -1,7 +1,4 @@
-
-vim.wo.number = true
 vim.g.have_nerd_font = true
-
 
 local opt = vim.opt
 
@@ -11,7 +8,7 @@ opt.mouse = "a"
 -- Tab stops
 opt.autoindent = true -- Enabled auto indentation.
 opt.expandtab = false -- Use tabs instead of spaces by default, use autocmds for lang-specific
-opt.tabstop = 2	-- Number of spaces for a tab.
+opt.tabstop = 2 -- Number of spaces for a tab.
 opt.softtabstop = 4 -- Number of spaces for a tab when editing.
 opt.shiftwidth = 2 -- Number of spaces for autoindent.
 opt.shiftround = true -- Round indent to multiples of shiftwidth.
@@ -43,7 +40,7 @@ opt.showmode = false -- Don't show mode because we have a status line.
 opt.virtualedit = "block" -- Allow the cursor to move where there is no text.
 opt.winminwidth = 5 -- Minimum window width
 
--- Popup behaviors 
+-- Popup behaviors
 opt.pumblend = 10 -- Popup blend default.
 opt.pumheight = 10 -- Popup height default.
 
@@ -61,7 +58,7 @@ opt.ignorecase = true -- Ignore case in search
 opt.smartcase = true -- Smart casing enabled
 
 -- Undo behaviors
-opt.undodir = os.getenv('HOME') .. '/.vim/undodir' -- Directory for undo files
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir" -- Directory for undo files
 opt.undofile = true -- Enable persistent undo.
 opt.undolevels = 10000
 
@@ -82,5 +79,3 @@ opt.inccommand = "nosplit" -- Shows the effects of a command incrementally in th
 
 -- Plugin behaviors
 vim.cmd.filetype("plugin indent on") -- Enable filetype detection, plugins, and indentation
-
-

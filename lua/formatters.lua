@@ -42,8 +42,8 @@ t.setup({
 		css = { "prettier" },
 		xml = { "xmlformatter" },
 		yaml = { "yamlfmt" },
-		python = { "isort", "autopep8" },
-		rust = { "rustfmt", lsp_format = "fallback" },
+		python = { "ruff_fix", "ruff_format" },
+		rust = { "rustfmt" },
 	},
 	-- Setup automatic format-on-save.
 	format_on_save = {
