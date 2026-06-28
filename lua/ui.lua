@@ -19,7 +19,7 @@ require("nvim-tree").setup({
     width = 30,
   },
   renderer = {
-    group_entry = true,
+    group_empty = true,
   },
   filters = {
     dotfiles = true,
