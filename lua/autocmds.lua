@@ -5,17 +5,28 @@ local augroup = vim.api.nvim_create_augroup
 
 local highlight_group = augroup("YankHighlight", { clear = true })
 
-autocmd('TextYankPost', {
-	pattern = '*',
-	callback = function()
-		vim.highlight.on_yank({ timeout = 150 })
-	end,
-	group = highlight_group
+autocmd("TextYankPost", {
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank({ timeout = 150 })
+  end,
+  group = highlight_group,
 })
 
 autocmd({ "FileType" }, {
-	pattern = { "markdown" },
-	callback = function()
-		vim.g.markdown_folding = 1
-	end,
+  pattern = { "markdown" },
+  callback = function()
+    vim.g.markdown_folding = 1
+  end,
+})
+
+autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client and client:supports_method("textDocument/completion") then
+      vim.lsp.completion.enable(true, args.data.client_id, args.buf, {
+        autotrigger = true,
+      })
+    end
+  end,
 })
