@@ -19,4 +19,5 @@ vim.pack.add({
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
   { src = "https://github.com/nvim-tree/nvim-tree.lua" },
   { src = "https://github.com/hrsh7th/nvim-cmp" },
+  { src = "https://github.com/github/copilot.vim" },
 })
