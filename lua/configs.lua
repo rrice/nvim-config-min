@@ -78,4 +78,12 @@ opt.splitkeep = "screen"
 opt.inccommand = "nosplit" -- Shows the effects of a command incrementally in the buffer
 
 -- Plugin behaviors
+vim.filetype.add({
+	filename = {
+		["docker-compose.yml"] = "yaml.docker-compose",
+		["docker-compose.yaml"] = "yaml.docker-compose",
+		["compose.yml"] = "yaml.docker-compose",
+		["compose.yaml"] = "yaml.docker-compose",
+	},
+})
 vim.cmd.filetype("plugin indent on") -- Enable filetype detection, plugins, and indentation
