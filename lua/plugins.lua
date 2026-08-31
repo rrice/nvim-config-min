@@ -8,6 +8,8 @@ vim.pack.add({
   { src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
   { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   { src = "https://github.com/NeogitOrg/neogit" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter-context" },
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
