@@ -29,6 +29,16 @@ autocmd({ "BufRead", "BufNewFile" }, {
 	end,
 })
 
+-- Autocreate directory when saving file
+-- When saving a path like src/test/test.js when the folders do not exist,
+-- this will create those directories automatically instead of producing an error.
+autocmd("BufWritePre", {
+	callback = function(event)
+		local file = vim.uv.fs_realpath(event.match) or event.match
+		vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
+	end,
+})
+
 -- LSP completion
 autocmd("LspAttach", {
 	callback = function(args)
