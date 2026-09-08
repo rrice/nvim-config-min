@@ -63,6 +63,7 @@ opt.undofile = true -- Enable persistent undo.
 opt.undolevels = 10000
 
 -- Completion behaviors
+opt.autocomplete = true
 opt.completeopt = { "menu", "menuone", "popup", "noinsert", "noselect" } -- Options for completion menu
 opt.winborder = "rounded" -- Use rounded borders for windows
 opt.hlsearch = false -- Disable highlighting of search results

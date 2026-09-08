@@ -162,3 +162,23 @@ end, { desc = "Format buffer" })
 keymap("n", "<leader>fs", function()
 	conform.format({ async = true, lsp_callback = true })
 end, { desc = "Format via LSP callback" })
+
+-- Completion
+-- Tab / S-Tab to move next / prev.
+-- C-Space to activate completion (if not automatically shown).
+
+keymap("i", "<C-Space>", function()
+	vim.lsp.buf.completion()
+end, { desc = "Trigger completion" })
+
+keymap("i", "<Tab>", function()
+	return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
+end, { expr = true })
+
+keymap("i", "<S-Tab>", function()
+	return vim.fn.pumvisible() == 1 and "<C-p>" or "<S-Tab>"
+end, { expr = true })
+
+
+
+
