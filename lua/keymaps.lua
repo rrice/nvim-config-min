@@ -140,8 +140,8 @@ keymap("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { de
 keymap("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
 
 -- Buffer Management
-keymap("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-keymap("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+keymap("n", "<Tab>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+keymap("n", "<S-Tab>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 keymap("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 keymap("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 keymap("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
