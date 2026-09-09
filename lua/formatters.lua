@@ -1,13 +1,14 @@
 local t = require("conform")
 
-local mason_root = vim.fn.stdpath("data") .. "/mason/packages"
-local biome_path = mason_root .. "/biome/node_modules/.bin/biome"
-local prettier_path = mason_root .. "/prettier/node_modules/.bin/prettier"
+local function tool(name)
+	local mason_bin = vim.fn.stdpath("data") .. "/mason/bin/" .. name
+	return vim.fn.executable(mason_bin) == 1 and mason_bin or name
+end
 
 t.setup({
   formatters = {
     biome = {
-      command = biome_path,
+      command = tool("biome"),
       args = {
         "format",
         "--stdin-file-path",
@@ -30,7 +31,7 @@ t.setup({
       },
     },
     prettier = {
-      cmd = { prettier_path, "--stdin-filepath", "$FILENAME" },
+      cmd = { tool("prettier"), "--stdin-filepath", "$FILENAME" },
 
       --If you need extra plugins (e.g. tailwindcss, astro) you can add them here:
       -- args = function(_, ctx)
