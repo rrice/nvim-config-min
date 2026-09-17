@@ -1,11 +1,9 @@
 -- Add any additional autocmds here
 
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
 
-local highlight_group = augroup("YankHighlight", { clear = true })
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 
-autocmd("TextYankPost", {
+vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 	callback = function()
 		vim.highlight.on_yank({ timeout = 150 })
@@ -14,7 +12,7 @@ autocmd("TextYankPost", {
 })
 
 -- File Type autoconfig.
-autocmd({ "FileType" }, {
+vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "markdown" },
 	callback = function()
 		vim.g.markdown_folding = 1
@@ -22,7 +20,7 @@ autocmd({ "FileType" }, {
 })
 
 -- File Type overrides.
-autocmd({ "BufRead", "BufNewFile" }, {
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = { "*.tmpl", "*.tpl" },
 	callback = function()
 		vim.bo.filetype = "gotmpl"
@@ -32,21 +30,11 @@ autocmd({ "BufRead", "BufNewFile" }, {
 -- Autocreate directory when saving file
 -- When saving a path like src/test/test.js when the folders do not exist,
 -- this will create those directories automatically instead of producing an error.
-autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function(event)
 		local file = vim.uv.fs_realpath(event.match) or event.match
 		vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
 	end,
 })
 
--- LSP completion
-autocmd("LspAttach", {
-	callback = function(args)
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		if client and client:supports_method("textDocument/completion") then
-			vim.lsp.completion.enable(true, args.data.client_id, args.buf, {
-				autotrigger = true,
-			})
-		end
-	end,
-})
+
