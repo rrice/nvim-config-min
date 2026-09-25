@@ -35,7 +35,6 @@ local diagnostic_goto = function(next, severity)
 end
 
 local buffer_utils = require("utils.buffer")
-local conform = require("conform")
 
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 vim.keymap.set("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
@@ -86,15 +85,6 @@ vim.keymap.set("n", "<leader>bo", function()
 end, { desc = "Delete Other Buffers" })
 vim.keymap.set("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 
--- Formatting
-vim.keymap.set("n", "<leader>ff", function()
-	conform.format({ async = true })
-end, { desc = "Format buffer" })
-
-vim.keymap.set("n", "<leader>fs", function()
-	conform.format({ async = true, lsp_callback = true })
-end, { desc = "Format via LSP callback" })
-
 -- Completion
 -- Tab / S-Tab to move next / prev.
 -- C-Space to activate completion (if not automatically shown).
@@ -110,7 +100,6 @@ end, { expr = true })
 vim.keymap.set("i", "<S-Tab>", function()
 	return vim.fn.pumvisible() == 1 and "<C-p>" or "<S-Tab>"
 end, { expr = true })
-
 
 
 

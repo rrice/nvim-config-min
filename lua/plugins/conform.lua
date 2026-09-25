@@ -81,10 +81,5 @@ end, {
 })
 
 vim.keymap.set("n", "<leader>fs", function()
-	conform.format({
-		async = true,
-		lsp_callback = true,
-	})
-end, {
-	desc = "Format via LSP callback",
-})
+	vim.lsp.buf.format({ async = true })
+end, { desc = "Format via LSP" })
