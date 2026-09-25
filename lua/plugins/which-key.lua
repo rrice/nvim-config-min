@@ -49,8 +49,6 @@ require("which-key").setup({
 
 	triggers = {
 		{ "<leader>", mode = { "n", "v" } },
-		{ "<auto>", mode = "nixsotc" },
-		{ "a", mode = { "n", "v" } },
+		{ "<auto>", mode = "nxso" },
 	},
 })
-
