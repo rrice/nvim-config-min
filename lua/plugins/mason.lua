@@ -37,6 +37,7 @@ require("mason-tool-installer").setup({
 		"prettier",
 		"clang-format",
 		"goimports",
+		"shfmt",
 		"yamlfmt",
 		"xmlformatter",
 	},

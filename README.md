@@ -1,34 +1,32 @@
-# Neovim Lazy Configuration
+# Neovim Configuration
 
-This is my Neovim minimal configuration for development.  It uses the plugins that I use the most and it is very
-opinionated. Feel free to use this as a base for your configuration. 
+This is my opinionated Neovim configuration for development. It uses Neovim's
+built-in `vim.pack` for plugins and native LSP and completion APIs, with Mason
+for installing language servers and tools. It does not use Lazy.
 
-# How I Use It
+## Requirements
 
-I actually clone this outside the standard `$HOME/.config` area so that I can continuously improve it easier.
+- Neovim 0.12 or newer.
 
-So on your system, pick a senisble location. For example, maybe I have a place for my git clones at `$HOME/src`: 
+This configuration also enables the experimental Neovim UI2 interface.
 
-````
-$ cd $HOME/src
-$ git clone https://github.com/rrice/nvim-config-min.git
-````
+## How I Use It
 
-To actually use this configuration, I may create a symbolic link to it and put it in the `$HOME/.config` directory:
+I clone this outside the standard `$HOME/.config` area so that I can continuously
+improve it.
 
-````
-$ ln -s $HOME/src/nvim-config-min $HOME/.config/nvim-config-min
-````
+Pick a location for the repository, for example:
 
-Assuming that you may be using a POSIX shell, create an alias using the symbolic link. Create a unique
-alias name for it. It can be any command you desire. Then, use the `NVIM_APPNAME` 
-environment variable and set it to the name of your symbolic link:
+```sh
+cd "$HOME/src"
+git clone https://github.com/rrice/nvim-config-min.git
+```
 
-````
-$ alias my-nvim='NVIM_APPNAME=nvim-config-min nvim'
-````
+Set `NVIM_APPNAME` to the config directory name when starting Neovim:
 
-If you want this alias to persist across sessions, then you need to add this alias to your shell startup configuration,
-like `$HOME/.bashrc`.
+```sh
+alias my-nvim='NVIM_APPNAME=nvim-config-min nvim'
+```
 
-
+To use the alias in future sessions, add it to your shell startup file, such as
+`$HOME/.bashrc`.
