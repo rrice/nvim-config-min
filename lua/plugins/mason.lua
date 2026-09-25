@@ -77,7 +77,36 @@ vim.lsp.enable({
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		if client and client:supports_method("textDocument/completion") then
+		if not client then
+			return
+		end
+
+		local lsp_keymaps = {
+			{ "textDocument/declaration", "gD", vim.lsp.buf.declaration, "Go to declaration" },
+			{ "textDocument/definition", "gd", vim.lsp.buf.definition, "Go to definition" },
+			{ "textDocument/implementation", "gI", vim.lsp.buf.implementation, "Go to implementation" },
+			{ "textDocument/references", "gr", vim.lsp.buf.references, "Go to references" },
+			{ "textDocument/typeDefinition", "gy", vim.lsp.buf.type_definition, "Go to type definition" },
+			{ "textDocument/hover", "K", vim.lsp.buf.hover, "Hover documentation" },
+			{ "textDocument/rename", "<leader>cr", vim.lsp.buf.rename, "Rename symbol" },
+			{ "textDocument/codeAction", "<leader>ca", vim.lsp.buf.code_action, "Code action" },
+		}
+
+		for _, keymap in ipairs(lsp_keymaps) do
+			local method, lhs, rhs, desc = unpack(keymap)
+			if client:supports_method(method, args.buf) then
+				vim.keymap.set("n", lhs, rhs, { buffer = args.buf, desc = desc })
+			end
+		end
+
+		if client:supports_method("textDocument/codeAction", args.buf) then
+			vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, {
+				buffer = args.buf,
+				desc = "Code action",
+			})
+		end
+
+		if client:supports_method("textDocument/completion", args.buf) then
 			vim.lsp.completion.enable(true, args.data.client_id, args.buf, {
 				autotrigger = true,
 			})
