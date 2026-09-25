@@ -74,6 +74,37 @@ vim.lsp.enable({
 	"zls",
 })
 
+vim.api.nvim_create_autocmd("InsertCharPre", {
+	callback = function(args)
+		local char = vim.v.char
+		if char == "" then
+			return
+		end
+
+		for _, client in ipairs(vim.lsp.get_clients({ bufnr = args.buf })) do
+			local provider = client.server_capabilities.signatureHelpProvider
+			if provider and client:supports_method("textDocument/signatureHelp", args.buf) then
+				local trigger_chars = vim.list_extend(
+					vim.deepcopy(provider.triggerCharacters or {}),
+					provider.retriggerCharacters or {}
+				)
+				if vim.list_contains(trigger_chars, char) then
+					vim.schedule(function()
+						local mode = vim.api.nvim_get_mode().mode
+						if vim.api.nvim_buf_is_valid(args.buf)
+							and vim.api.nvim_get_current_buf() == args.buf
+							and mode:sub(1, 1) == "i"
+						then
+							vim.lsp.buf.signature_help()
+						end
+					end)
+					return
+				end
+			end
+		end
+	end,
+})
+
 -- LSP completion
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
