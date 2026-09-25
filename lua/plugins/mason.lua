@@ -48,7 +48,6 @@ require("mason-tool-installer").setup({
 vim.lsp.enable({
 	"basedpyright",
 	"bashls",
-	"biome",
 	"clangd",
 	"cmake",
 	"cssls",
