@@ -1,4 +1,3 @@
-local ts_themes = require("telescope.themes")
 local ts_builtin = require("telescope.builtin")
 local ts = require("telescope")
 
@@ -10,14 +9,10 @@ ts.setup({
 			override_file_sort = true,
 			case_mode = "smart_case",
 		},
-		["ui-select"] = {
-			ts_themes.get_dropdown({}),
-		},
 	},
 })
 
 ts.load_extension("fzf")
-ts.load_extension("ui-select")
 
 -- Telescope keymaps
 
