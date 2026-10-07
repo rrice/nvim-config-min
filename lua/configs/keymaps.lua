@@ -1,4 +1,3 @@
-
 -- Set highlight on search, press <Esc> to clear.
 vim.opt.hlsearch = true
 
@@ -90,7 +89,7 @@ vim.keymap.set("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Wi
 -- C-Space to activate completion (if not automatically shown).
 
 vim.keymap.set("i", "<C-Space>", function()
-	vim.lsp.buf.completion()
+	vim.lsp.completion.get()
 end, { desc = "Trigger completion" })
 
 vim.keymap.set("i", "<Tab>", function()
@@ -100,6 +99,3 @@ end, { expr = true })
 vim.keymap.set("i", "<S-Tab>", function()
 	return vim.fn.pumvisible() == 1 and "<C-p>" or "<S-Tab>"
 end, { expr = true })
-
-
-
