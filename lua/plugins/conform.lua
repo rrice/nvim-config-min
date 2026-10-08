@@ -15,23 +15,11 @@ local function tool(name)
 	return name
 end
 
-local function biome_args()
-	local config_path = vim.fn.expand("~/.config/biome/biome.json")
-	local args = { "format", "--stdin-file-path", "$FILENAME" }
-
-	if vim.fn.filereadable(config_path) == 1 then
-		table.insert(args, "--config-path")
-		table.insert(args, config_path)
-	end
-
-	return args
-end
-
 conform.setup({
 	formatters = {
 		biome = {
 			command = tool("biome"),
-			args = biome_args,
+			args = { "format", "--stdin-file-path", "$FILENAME" },
 			stdin = true,
 			filetypes = {
 				"javascript",
