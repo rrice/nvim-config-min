@@ -58,7 +58,9 @@ opt.ignorecase = true -- Ignore case in search
 opt.smartcase = true -- Smart casing enabled
 
 -- Undo behaviors
-opt.undodir = os.getenv("HOME") .. "/.vim/undodir" -- Directory for undo files
+local undodir = vim.fn.expand("~/.vim/undodir")
+vim.fn.mkdir(undodir, "p")
+opt.undodir = undodir -- Directory for undo files
 opt.undofile = true -- Enable persistent undo.
 opt.undolevels = 10000
 
