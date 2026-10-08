@@ -1,20 +1,37 @@
 local conform = require("conform")
 local function tool(name)
-	local mason_bin = vim.fn.stdpath("data") .. "/mason/bin/" .. name
-	return vim.fn.executable(mason_bin) == 1 and mason_bin or name
+	local candidates = {
+		vim.fn.stdpath("data") .. "/mason/bin/" .. name,
+		vim.fn.stdpath("data") .. "/mason/bin/" .. name .. ".exe",
+		name,
+	}
+
+	for _, candidate in ipairs(candidates) do
+		if vim.fn.executable(candidate) == 1 then
+			return candidate
+		end
+	end
+
+	return name
+end
+
+local function biome_args()
+	local config_path = vim.fn.expand("~/.config/biome/biome.json")
+	local args = { "format", "--stdin-file-path", "$FILENAME" }
+
+	if vim.fn.filereadable(config_path) == 1 then
+		table.insert(args, "--config-path")
+		table.insert(args, config_path)
+	end
+
+	return args
 end
 
 conform.setup({
 	formatters = {
 		biome = {
 			command = tool("biome"),
-			args = {
-				"format",
-				"--stdin-file-path",
-				"$FILENAME",
-				"--config-path",
-				vim.fn.expand("~/.config/biome/biome.json"),
-			},
+			args = biome_args,
 			stdin = true,
 			filetypes = {
 				"javascript",

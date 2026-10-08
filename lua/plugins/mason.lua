@@ -37,13 +37,15 @@ require("mason-tool-installer").setup({
 		"prettier",
 		"clang-format",
 		"goimports",
+		"rustfmt",
 		"shfmt",
 		"yamlfmt",
 		"xmlformatter",
 	},
 
-	auto_update = true,
-	run_on_start = true,
+	-- Keep startup predictable; install tools explicitly with :Mason or :MasonToolsInstall.
+	auto_update = false,
+	run_on_start = false,
 })
 
 vim.lsp.enable({

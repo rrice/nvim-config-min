@@ -10,6 +10,8 @@ for installing language servers and tools. It does not use Lazy.
 
 This configuration also enables the experimental Neovim UI2 interface.
 
+The config prefers Mason-installed binaries when present and falls back gracefully when custom tool paths are not available. For example, if you use a custom Biome config, place it at `~/.config/biome/biome.json`; otherwise the formatter will use Biome's defaults.
+
 ## How I Use It
 
 I clone this outside the standard `$HOME/.config` area so that I can continuously
