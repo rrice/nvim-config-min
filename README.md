@@ -16,7 +16,8 @@ The config prefers Mason-installed binaries when present and falls back graceful
 
 Mason tools are not installed automatically on startup. After opening Neovim for
 the first time, run `:MasonToolsInstall` to install the configured language
-servers and formatters.
+servers and formatters. Run `:TSInstallConfigured` to install the configured
+Treesitter parsers.
 
 ## How I Use It
 
