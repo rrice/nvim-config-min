@@ -9,7 +9,7 @@ opt.mouse = "a"
 opt.autoindent = true -- Enabled auto indentation.
 opt.expandtab = false -- Use tabs instead of spaces by default, use autocmds for lang-specific
 opt.tabstop = 2 -- Number of spaces for a tab.
-opt.softtabstop = 4 -- Number of spaces for a tab when editing.
+opt.softtabstop = -1 -- Use shiftwidth for tabs while editing.
 opt.shiftwidth = 2 -- Number of spaces for autoindent.
 opt.shiftround = true -- Round indent to multiples of shiftwidth.
 
