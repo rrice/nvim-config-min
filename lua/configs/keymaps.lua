@@ -10,11 +10,17 @@ vim.diagnostic.config({
 	float = {
 		border = "single",
 		format = function(d)
+			local code = d.code
+			if not code then
+				local lsp_data = d.user_data and d.user_data.lsp
+				code = lsp_data and lsp_data.code
+			end
+
 			return string.format(
 				"%s (%s) [%s]",
-				d.message,
-				d.source,
-				d.code or d.user_data.lsp.code and d.user_data.lsp and d.user_data.lsp.code or ""
+				d.message or "",
+				d.source or "",
+				code or ""
 			)
 		end,
 	},
