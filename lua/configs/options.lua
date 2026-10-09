@@ -65,9 +65,8 @@ opt.undofile = true -- Enable persistent undo.
 opt.undolevels = 10000
 
 -- Completion behaviors
-opt.autocomplete = true
-opt.completeopt = { "menu", "menuone", "popup", "noinsert", "preinsert" } -- Show and preview the leading suggestion.
-opt.infercase = true -- Allow preinserted suggestions while ignoring case.
+opt.autocomplete = false -- Let nvim-cmp manage completion.
+opt.completeopt = { "menu", "menuone", "noselect" }
 opt.winborder = "rounded" -- Use rounded borders for windows
 opt.pumborder = "rounded" -- Match the border style of floating windows.
 opt.hlsearch = false -- Disable highlighting of search results

@@ -140,10 +140,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			})
 		end
 
-		if client:supports_method("textDocument/completion", args.buf) then
-			vim.lsp.completion.enable(true, args.data.client_id, args.buf, {
-				autotrigger = true,
-			})
-		end
 	end,
 })

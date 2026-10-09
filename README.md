@@ -1,8 +1,8 @@
 # Neovim Configuration
 
 This is my opinionated Neovim configuration for development. It uses Neovim's
-built-in `vim.pack` for plugins and native LSP and completion APIs, with Mason
-for installing language servers and tools. It does not use Lazy.
+built-in `vim.pack` for plugins and native LSP APIs, with nvim-cmp for completion
+and Mason for installing language servers and tools. It does not use Lazy.
 
 ## Requirements
 

@@ -38,6 +38,9 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-context" },
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
+	{ src = "https://github.com/hrsh7th/nvim-cmp" },
+	{ src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
+	{ src = "https://github.com/hrsh7th/cmp-buffer" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
@@ -52,6 +55,7 @@ require("plugins.telescope")
 require("plugins.lualine")
 require("plugins.nvim-tree")
 require("plugins.conform")
+require("plugins.cmp")
 require("plugins.mason")
 require("plugins.neogit")
 require("plugins.diffview")

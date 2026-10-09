@@ -89,23 +89,3 @@ vim.keymap.set("n", "<leader>bo", function()
 	buffer_utils.delete_others(false)
 end, { desc = "Delete Other Buffers" })
 vim.keymap.set("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
-
--- Completion
--- Tab / S-Tab to move next / prev.
--- C-Space to activate completion (if not automatically shown).
-
-vim.keymap.set("i", "<C-Space>", function()
-	vim.lsp.completion.get()
-end, { desc = "Trigger completion" })
-
-vim.keymap.set("i", "<CR>", function()
-	return vim.fn.pumvisible() == 1 and "<C-y>" or "<CR>"
-end, { expr = true, desc = "Accept completion or insert newline" })
-
-vim.keymap.set("i", "<Tab>", function()
-	return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
-end, { expr = true })
-
-vim.keymap.set("i", "<S-Tab>", function()
-	return vim.fn.pumvisible() == 1 and "<C-p>" or "<S-Tab>"
-end, { expr = true })
