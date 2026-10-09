@@ -1,5 +1,8 @@
 local cmp = require("cmp")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local luasnip = require("luasnip")
+
+require("luasnip.loaders.from_vscode").lazy_load()
 
 vim.lsp.config("*", {
 	capabilities = capabilities,
@@ -9,7 +12,7 @@ cmp.setup({
 	preselect = cmp.PreselectMode.Item,
 	snippet = {
 		expand = function(args)
-			vim.snippet.expand(args.body)
+			luasnip.lsp_expand(args.body)
 		end,
 	},
 	window = {
@@ -44,6 +47,8 @@ cmp.setup({
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.confirm({ select = true })
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
 			else
 				fallback()
 			end
@@ -58,6 +63,8 @@ cmp.setup({
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
 			else
 				vim.api.nvim_feedkeys(
 					vim.api.nvim_replace_termcodes("<C-d>", true, false, true),
@@ -76,7 +83,9 @@ cmp.setup({
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
 	}, {
+		{ name = "path" },
 		{ name = "buffer" },
 	}),
 })

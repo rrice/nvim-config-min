@@ -10,6 +10,10 @@ and Mason for installing language servers and tools. It does not use Lazy.
 
 This configuration also enables the experimental Neovim UI2 interface.
 
+Completion suggestions include LSP results, LuaSnip snippets, file paths, and
+words from the current buffer. The Friendly Snippets collection provides
+ready-made language snippets.
+
 Biome receives the current file path when formatting, allowing it to discover
 the configuration for that project instead of forcing a global config.
 
