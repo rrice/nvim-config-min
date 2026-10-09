@@ -32,6 +32,20 @@ cmp.setup({
 			auto_open = true,
 		},
 	},
+	formatting = {
+		fields = { "abbr", "kind", "menu" },
+		format = function(entry, item)
+			local source_labels = {
+				nvim_lsp = "[LSP]",
+				luasnip = "[Snippet]",
+				path = "[Path]",
+				buffer = "[Buffer]",
+			}
+
+			item.menu = source_labels[entry.source.name] or ("[" .. entry.source.name .. "]")
+			return item
+		end,
+	},
 	mapping = cmp.mapping({
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.abort(),
