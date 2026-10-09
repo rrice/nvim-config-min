@@ -41,7 +41,7 @@ opt.virtualedit = "block" -- Allow the cursor to move where there is no text.
 opt.winminwidth = 5 -- Minimum window width
 
 -- Popup behaviors
-opt.pumblend = 10 -- Popup blend default.
+opt.pumblend = 0 -- Match the opacity of floating windows.
 opt.pumheight = 10 -- Popup height default.
 
 -- Folding
@@ -66,8 +66,10 @@ opt.undolevels = 10000
 
 -- Completion behaviors
 opt.autocomplete = true
-opt.completeopt = { "menu", "menuone", "popup", "noinsert", "noselect" } -- Options for completion menu
+opt.completeopt = { "menu", "menuone", "popup", "noinsert", "preinsert" } -- Show and preview the leading suggestion.
+opt.infercase = true -- Allow preinserted suggestions while ignoring case.
 opt.winborder = "rounded" -- Use rounded borders for windows
+opt.pumborder = "rounded" -- Match the border style of floating windows.
 opt.hlsearch = false -- Disable highlighting of search results
 
 -- System behaviors

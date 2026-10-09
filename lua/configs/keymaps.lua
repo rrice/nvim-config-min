@@ -98,6 +98,10 @@ vim.keymap.set("i", "<C-Space>", function()
 	vim.lsp.completion.get()
 end, { desc = "Trigger completion" })
 
+vim.keymap.set("i", "<CR>", function()
+	return vim.fn.pumvisible() == 1 and "<C-y>" or "<CR>"
+end, { expr = true, desc = "Accept completion or insert newline" })
+
 vim.keymap.set("i", "<Tab>", function()
 	return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
 end, { expr = true })
