@@ -1,6 +1,7 @@
 local parsers = {
 	"bash",
 	"c",
+	"c_sharp",
 	"dockerfile",
 	"git_config",
 	"git_rebase",
