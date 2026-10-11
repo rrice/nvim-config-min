@@ -44,3 +44,21 @@ alias my-nvim='NVIM_APPNAME=nvim-config-min nvim'
 
 To use the alias in future sessions, add it to your shell startup file, such as
 `$HOME/.bashrc`.
+
+## AI-Assisted Development
+
+AI tools may be used to understand the configuration, draft or edit code,
+generate tests and documentation, debug, refactor, and review changes. Review
+AI-generated changes and run relevant tests or checks when available before
+committing. Apply extra scrutiny to security-sensitive changes.
+
+Never provide AI tools with secrets, credentials, or private personal data.
+Agents may make scoped edits and run relevant checks, but must ask before risky
+or destructive actions. No special AI attribution is required; follow the
+repository's usual commit and contribution conventions.
+
+Do not use AI to automatically file or submit pull requests, issues, or other
+public repository content. Do not publish irrelevant, inaccurate, nonsensical,
+or otherwise low-quality AI-generated content. Any externally visible
+contribution must be purposeful, checked by a human, and explicitly authorized
+by the repository owner.
