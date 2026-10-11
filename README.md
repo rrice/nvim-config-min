@@ -21,8 +21,30 @@ the configuration for that project instead of forcing a global config.
 
 Mason tools are not installed automatically on startup. After opening Neovim for
 the first time, run `:MasonToolsInstall` to install the configured language
-servers and formatters. Run `:TSInstallConfigured` to install the configured
-Treesitter parsers.
+servers, formatters, and debug adapters. Run `:TSInstallConfigured` to install
+the configured Treesitter parsers.
+
+## Debugging
+
+The DAP setup includes Python, Bash, C/C++, Go, C#, Rust, Zig, and JavaScript /
+TypeScript (Node.js, Chrome, Edge, and Firefox) configurations. Set breakpoints with
+`<leader>db`, start or continue with `<F5>`, and use `<F10>`, `<F11>`, and
+`<F12>` to step. The DAP UI opens when a session starts; toggle it with
+`<leader>du`.
+
+Browser debugging uses the JavaScript debug adapter. Launch Chrome from a
+JavaScript or TypeScript buffer with the `Launch Chrome` configuration, or
+start Chrome / Edge with remote debugging enabled on port 9222 and choose the
+matching attach configuration. Firefox has `Launch Firefox` and `Attach to
+Firefox` configurations; attach requires Firefox remote debugging enabled.
+Browser source maps use the current project root.
+
+For Neovim Lua, run `:LuaDebugStart` in the Neovim process being debugged, then
+start the `Attach to Neovim (OSV)` configuration from a second Neovim instance.
+HTML, CSS, templates, SQL, and configuration files do not have standalone
+program debuggers here; debug their runtime or application with the
+corresponding adapter instead. PowerShell has an LSP configured but no DAP
+adapter in this setup yet.
 
 ## How I Use It
 

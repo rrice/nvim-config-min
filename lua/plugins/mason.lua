@@ -32,6 +32,15 @@ require("mason-tool-installer").setup({
 		"yaml-language-server",
 		"zls",
 
+		-- Debug adapters
+		"bash-debug-adapter",
+		"codelldb",
+		"debugpy",
+		"delve",
+		"firefox-debug-adapter",
+		"js-debug-adapter",
+		"netcoredbg",
+
 		-- Formatters
 		"stylua",
 		"prettier",

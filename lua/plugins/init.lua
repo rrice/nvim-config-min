@@ -45,6 +45,10 @@ vim.pack.add({
 	{ src = "https://github.com/L3MON4D3/LuaSnip" },
 	{ src = "https://github.com/saadparwaiz1/cmp_luasnip" },
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
+	{ src = "https://github.com/mfussenegger/nvim-dap" },
+	{ src = "https://github.com/rcarriga/nvim-dap-ui" },
+	{ src = "https://github.com/nvim-neotest/nvim-nio" },
+	{ src = "https://github.com/jbyuki/one-small-step-for-vimkind" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
@@ -60,6 +64,7 @@ require("plugins.lualine")
 require("plugins.nvim-tree")
 require("plugins.conform")
 require("plugins.cmp")
+require("plugins.dap")
 require("plugins.mason")
 require("plugins.neogit")
 require("plugins.diffview")
