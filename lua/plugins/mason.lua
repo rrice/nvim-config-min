@@ -32,6 +32,16 @@ require("mason-tool-installer").setup({
 		"yaml-language-server",
 		"zls",
 
+		-- Linters
+		"golangci-lint",
+		"hadolint",
+		"luacheck",
+		"markdownlint-cli2",
+		"shellcheck",
+		"sqlfluff",
+		"stylelint",
+		"yamllint",
+
 		-- Debug adapters
 		"bash-debug-adapter",
 		"codelldb",
@@ -57,9 +67,24 @@ require("mason-tool-installer").setup({
 	run_on_start = false,
 })
 
+vim.lsp.config("clangd", {
+	cmd = { "clangd", "--clang-tidy" },
+})
+
+vim.lsp.config("rust_analyzer", {
+	settings = {
+		["rust-analyzer"] = {
+			check = {
+				command = "clippy",
+			},
+		},
+	},
+})
+
 vim.lsp.enable({
 	"basedpyright",
 	"bashls",
+	"biome",
 	"clangd",
 	"cmake",
 	"cssls",

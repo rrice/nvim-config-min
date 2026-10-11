@@ -21,14 +21,14 @@ the configuration for that project instead of forcing a global config.
 
 Mason tools are not installed automatically on startup. After opening Neovim for
 the first time, run `:MasonToolsInstall` to install the configured language
-servers, formatters, and debug adapters. Run `:TSInstallConfigured` to install
-the configured Treesitter parsers.
+servers, formatters, linters, and debug adapters. Run `:TSInstallConfigured` to
+install the configured Treesitter parsers.
 
 ## Debugging
 
 The DAP setup includes Python, Bash, C/C++, Go, C#, Rust, Zig, and JavaScript /
-TypeScript (Node.js, Chrome, Edge, and Firefox) configurations. Set breakpoints with
-`<leader>db`, start or continue with `<F5>`, and use `<F10>`, `<F11>`, and
+TypeScript (Node.js, Chrome, Edge, and Firefox) configurations. Set breakpoints
+with `<leader>db`, start or continue with `<F5>`, and use `<F10>`, `<F11>`, and
 `<F12>` to step. The DAP UI opens when a session starts; toggle it with
 `<leader>du`.
 
@@ -45,6 +45,16 @@ HTML, CSS, templates, SQL, and configuration files do not have standalone
 program debuggers here; debug their runtime or application with the
 corresponding adapter instead. PowerShell has an LSP configured but no DAP
 adapter in this setup yet.
+
+## Linting
+
+Linters run after saving a buffer; run them on demand with `<leader>ll`.
+ShellCheck, golangci-lint, Hadolint, Stylelint, yamllint, markdownlint-cli2,
+SQLFluff, and Luacheck are configured through nvim-lint. clangd enables its
+clang-tidy diagnostics, and Rust Analyzer runs Clippy on save. Biome and Ruff
+provide diagnostics through their existing LSP configurations. Rust projects
+need the Clippy component installed in the active Rust toolchain; Stylelint
+uses each project's Stylelint configuration.
 
 ## How I Use It
 
