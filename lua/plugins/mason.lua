@@ -52,6 +52,7 @@ require("mason-tool-installer").setup({
 		"netcoredbg",
 
 		-- Formatters
+		"cmakelang",
 		"stylua",
 		"prettier",
 		"clang-format",

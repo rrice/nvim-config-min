@@ -49,6 +49,16 @@ conform.setup({
 			--   return extra
 			-- end,
 		},
+		prettier_svelte = {
+			command = tool("prettier"),
+			args = { "--plugin", "prettier-plugin-svelte", "--stdin-filepath", "$FILENAME" },
+			stdin = true,
+		},
+		zigfmt = {
+			command = tool("zig"),
+			args = { "fmt", "--stdin" },
+			stdin = true,
+		},
 	},
 	formatters_by_ft = {
 		javascript = { "biome" },
@@ -56,17 +66,26 @@ conform.setup({
 		typescript = { "biome" },
 		typescriptreact = { "biome" },
 		json = { "biome", "prettier", stop_after_first = true },
+		jsonc = { "biome" },
 		lua = { "stylua" },
 		c = { "clang-format" },
+		cpp = { "clang-format" },
 		go = { "goimports", "gofmt", stop_after_first = true },
 		html = { "prettier" },
 		markdown = { "prettier" },
 		css = { "prettier" },
+		scss = { "prettier" },
+		less = { "prettier" },
 		xml = { "xmlformatter" },
 		yaml = { "yamlfmt" },
 		python = { "ruff_fix", "ruff_format" },
 		sh = { "shfmt" },
 		rust = { "rustfmt" },
+		toml = { "taplo" },
+		sql = { "sqlfluff" },
+		svelte = { "prettier_svelte" },
+		cmake = { "cmake_format" },
+		zig = { "zigfmt" },
 	},
 
 	format_on_save = {

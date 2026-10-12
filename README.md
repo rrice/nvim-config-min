@@ -56,6 +56,11 @@ provide diagnostics through their existing LSP configurations. Rust projects
 need the Clippy component installed in the active Rust toolchain; Stylelint
 uses each project's Stylelint configuration.
 
+Conform formats C++, JSONC, TOML, SQL, Svelte, CMake, and Zig in addition to
+the existing filetypes. Svelte formatting requires `prettier-plugin-svelte` to
+be installed in the project. Zig formatting uses `zig fmt`, so the Zig
+compiler must be available on `PATH`; `zls` alone does not provide it.
+
 ## How I Use It
 
 I clone this outside the standard `$HOME/.config` area so that I can continuously
